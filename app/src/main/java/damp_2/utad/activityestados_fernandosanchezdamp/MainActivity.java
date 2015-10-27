@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
         Log.v("CONTROL", "HE ENTRADO EN PAUSA");
         ln_tiempoMiliseg_enPause = System.currentTimeMillis();
-        txtTiempAntDePause.setText(("" + (ln_tiempoMiliseg_enPause - ln_tiempoMiliseg_alArrancar) / 1000));
+        txtTiempAntDePause.setText(("" + (ln_tiempoMiliseg_enPause - ln_tiempoMiliseg_alArrancar) / 1000) + " Seg.");
         super.onPause();
 
     }
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         Log.v("CONTROL", "HE VUELTO DE SEGUNDO PLANO");
         ln_tiempoMiliseg_alVolver = System.currentTimeMillis();
-        txtTiempoEnPause.setText(("" + (ln_tiempoMiliseg_alVolver - ln_tiempoMiliseg_enPause) / 1000));
+        txtTiempoEnPause.setText(("" + (ln_tiempoMiliseg_alVolver - ln_tiempoMiliseg_enPause) / 1000) + " Seg.");
     }
 
     @Override
