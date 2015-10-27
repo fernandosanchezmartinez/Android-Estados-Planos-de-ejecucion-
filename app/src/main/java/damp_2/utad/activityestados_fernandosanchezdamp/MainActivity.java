@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         Log.v("CONTROL", "HE VUELTO DE SEGUNDO PLANO");
         ln_tiempoMiliseg_alVolver = System.currentTimeMillis();
-        txtTiempoEnPause.setText(("" + (ln_tiempoMiliseg_enPause - ln_tiempoMiliseg_alVolver) / 1000));
+        txtTiempoEnPause.setText(("" + (ln_tiempoMiliseg_alVolver - ln_tiempoMiliseg_enPause) / 1000));
     }
 
     @Override
