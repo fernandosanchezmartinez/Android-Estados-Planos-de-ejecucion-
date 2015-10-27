@@ -52,10 +52,11 @@ public class MainActivity extends AppCompatActivity {
 //---------------------------------------------------------------------------------------------
     @Override
     protected void onPause() {
-        super.onPause();
+
         Log.v("CONTROL", "HE ENTRADO EN PAUSA");
         ln_tiempoMiliseg_enPause = System.currentTimeMillis();
-        txtTiempAntDePause.setText("" + (ln_tiempoMiliseg_alArrancar - ln_tiempoMiliseg_enPause));
+        txtTiempAntDePause.setText(("" + (ln_tiempoMiliseg_enPause - ln_tiempoMiliseg_alArrancar) / 1000));
+        super.onPause();
 
     }
 
@@ -64,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         Log.v("CONTROL", "HE VUELTO DE SEGUNDO PLANO");
         ln_tiempoMiliseg_alVolver = System.currentTimeMillis();
-        txtTiempoEnPause.setText("" + (ln_tiempoMiliseg_enPause - ln_tiempoMiliseg_alVolver))
+        txtTiempoEnPause.setText(("" + (ln_tiempoMiliseg_enPause - ln_tiempoMiliseg_alVolver) / 1000));
     }
 
     @Override
