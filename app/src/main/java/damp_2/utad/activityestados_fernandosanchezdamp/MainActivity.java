@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     long ln_tiempoMiliseg_alArrancar = 0;
+    long ln_tiempoMiliseg_enPause = 0;
+    long ln_tiempoMiliseg_alVolver = 0;
 
 
     public void initLayouts(){
@@ -39,26 +41,35 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ln_tiempoMiliseg_alArrancar = System.currentTimeMillis();
+
         this.initLayouts();
         this.init_textViews();
+
+        ln_tiempoMiliseg_alArrancar = System.currentTimeMillis();
+        //txtTiempAntDePause.setText("" + ln_tiempoMiliseg_alArrancar);
+
     }
 //---------------------------------------------------------------------------------------------
     @Override
     protected void onPause() {
         super.onPause();
-        Log.v("MSG_CONTROL", "HE ENTRADO EN PAUSA");
+        Log.v("CONTROL", "HE ENTRADO EN PAUSA");
+        ln_tiempoMiliseg_enPause = System.currentTimeMillis();
+        txtTiempAntDePause.setText("" + (ln_tiempoMiliseg_alArrancar - ln_tiempoMiliseg_enPause));
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.v("MSG_CONTROL", "HE VUELTO DE SEGUNDO PLANO");
+        Log.v("CONTROL", "HE VUELTO DE SEGUNDO PLANO");
+        ln_tiempoMiliseg_alVolver = System.currentTimeMillis();
+        txtTiempoEnPause.setText("" + (ln_tiempoMiliseg_enPause - ln_tiempoMiliseg_alVolver))
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.v("MSG_CONTROL", "FINN");
+        Log.v("CONTROL", "FIN");
     }
 }
